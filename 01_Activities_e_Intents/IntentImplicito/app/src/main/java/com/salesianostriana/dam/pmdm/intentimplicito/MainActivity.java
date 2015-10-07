@@ -11,15 +11,22 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
-    Button btnDialer;
+    Button btnDialer, btnCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Rescato el botón de marcar un teléfono en el dialer
+        // y le asocio el evento click
         btnDialer = (Button) findViewById(R.id.buttonDialer);
         btnDialer.setOnClickListener(this);
+
+        // Rescato el botón para llamar
+        // y le asocio el evento click
+        btnCall = (Button) findViewById(R.id.buttonCall);
+        btnCall.setOnClickListener(this);
     }
 
     @Override
@@ -46,7 +53,20 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Uri number = Uri.parse("tel:5551234");
-        Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
+        int idBoton = v.getId();
+        Uri number = Uri.parse("tel:954112233");
+
+        switch (idBoton) {
+            case R.id.buttonDialer:
+                Intent dialPhone = new Intent(Intent.ACTION_DIAL, number);
+                startActivity(dialPhone);
+                break;
+
+            case R.id.buttonCall:
+                Intent callPhone = new Intent(Intent.ACTION_CALL, number);
+                startActivity(callPhone);
+                break;
+        }
+
     }
 }
