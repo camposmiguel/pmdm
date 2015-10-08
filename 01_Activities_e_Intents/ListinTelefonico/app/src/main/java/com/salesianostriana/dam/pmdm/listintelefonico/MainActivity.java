@@ -2,7 +2,6 @@ package com.salesianostriana.dam.pmdm.listintelefonico;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,8 +57,13 @@ public class MainActivity extends Activity implements OnClickListener {
             telefono="617225577";
         }
 
-        Uri datos = Uri.parse("tel:"+telefono);
-        Intent i = new Intent(Intent.ACTION_DIAL, datos);
+        //Uri datos = Uri.parse("tel:"+telefono);
+        //Intent i = new Intent(Intent.ACTION_DIAL, datos);
+        //startActivity(i);
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(Intent.EXTRA_TEXT,"Mensaje para "+telefono);
         startActivity(i);
     }
 }
