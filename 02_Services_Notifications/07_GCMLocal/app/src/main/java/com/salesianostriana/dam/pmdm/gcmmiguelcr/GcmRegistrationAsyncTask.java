@@ -58,6 +58,9 @@ public class GcmRegistrationAsyncTask extends AsyncTask<Void, Void, String> {
             String regId = gcm.register(SENDER_ID);
             msg = "Device registered, registration ID=" + regId;
 
+            //TODO
+            // guardar en preferencias la variable regId
+
             // You should send the registration ID to your server over HTTP,
             // so it can use GCM/HTTP or CCS to send messages to your app.
             // The request to your server should be authenticated if your app
