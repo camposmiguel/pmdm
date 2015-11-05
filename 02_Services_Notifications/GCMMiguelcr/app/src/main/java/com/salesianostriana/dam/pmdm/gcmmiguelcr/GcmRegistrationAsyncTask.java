@@ -25,12 +25,13 @@ import java.util.logging.Logger;
 /**
  * Created by miguelcampos on 1/11/15.
  */
-public class GcmRegistrationAsyncTask extends AsyncTask<Void, Void, String> {
+public class GcmRegistrationAsyncTask extends AsyncTask<String, Void, String> {
     private static Registration regService = null;
     private GoogleCloudMessaging gcm;
     private Context context;
     private String regId;
     JSONArray response = new JSONArray();
+    String nombrePersona;
 
     // TODO: change to your own sender ID to Google Developers Console project number, as per instructions above
     private static final String SENDER_ID = "813103604059";
@@ -40,9 +41,10 @@ public class GcmRegistrationAsyncTask extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected String doInBackground(Void... params) {
+    protected String doInBackground(String... params) {
 
         String msg = "";
+        nombrePersona = params[0];
         try {
             if (gcm == null) {
                 gcm = GoogleCloudMessaging.getInstance(context);
@@ -76,7 +78,7 @@ public class GcmRegistrationAsyncTask extends AsyncTask<Void, Void, String> {
         Log.v("CatalogClient", "Entra en sendRegistration");
 
         try {
-            url = new URL("http://rest.miguelcr.com/register.php?regId=" + regId);
+            url = new URL("http://rest.miguelcr.com/register.php?regId=" + regId+"&nombre="+nombrePersona);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
