@@ -1,16 +1,18 @@
-package com.salesianostriana.dam.pmdm.hellomaps;
+package com.salesianostriana.maps;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
@@ -18,7 +20,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -41,7 +42,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng triana = new LatLng(37.380346,-6.007744);
-        mMap.addMarker(new MarkerOptions().position(triana).title("Esto es Triana, y aquí hay que..."));
+        Marker marcadorTriana = mMap.addMarker(new MarkerOptions()
+                .position(triana));
+
+        marcadorTriana.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.ic_salesianos_triana));
+        marcadorTriana.setTitle("Salesianos Triana");
+        marcadorTriana.setSnippet("C/ Condes de Bustillo, 17");
+        marcadorTriana.showInfoWindow();
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(triana));
     }
 }
