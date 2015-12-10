@@ -42,11 +42,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), 10));
 
         mClusterManager = new ClusterManager<MyItem>(this, mMap);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
 
         mMap.setOnCameraChangeListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
 
-
+        // Genero marcadores de forma aleatoria
         addItems();
 
     }
@@ -57,8 +58,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         double lat = 51.5145160;
         double lng = -0.1270060;
 
-        // Add ten cluster items in close proximity, for purposes of this example.
-        for (int i = 0; i < 10; i++) {
+        // Generamos mediante un offset marcadores cercanos
+        for (int i = 0; i < 40; i++) {
             double offset = i / 60d;
             lat = lat + offset;
             lng = lng + offset;
