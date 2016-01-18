@@ -1,4 +1,4 @@
-package com.miguelcr.gmaps;
+package com.miguelcr.login;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;

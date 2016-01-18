@@ -1,4 +1,4 @@
-package com.miguelcr.gmaps;
+package com.miguelcr.login;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
