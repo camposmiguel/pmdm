@@ -1,4 +1,4 @@
-package com.miguelcr.mapsfragment;
+package com.miguelcr.gmaps;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

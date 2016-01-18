@@ -1,4 +1,4 @@
-package com.miguelcr.mapsfragment;
+package com.miguelcr.gmaps;
 
 import org.junit.Test;
 
